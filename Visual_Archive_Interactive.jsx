@@ -242,36 +242,11 @@ const DATA = [
 ];
 
 function Img({d,style,onClick}){
-  const [ok,setOk]=useState(true);
-  const [idx,setIdx]=useState(0);
   const a=CC[d.cat]||"#888";
-  const placeholder=`https://picsum.photos/seed/visual-archive-${d.id}/1200/900`;
-  const fallbackPreview=d.url?`https://opengraph.githubassets.com/1/${encodeURIComponent(d.url)}`:null;
-  const sources=[d.img,fallbackPreview,placeholder].filter(Boolean);
-
-  useEffect(()=>{
-    setOk(true);
-    setIdx(0);
-  },[d.img,d.url]);
-
-  if(!ok) return <div style={{...style,background:d.grad,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:16,textAlign:"center",cursor:onClick?"pointer":"default"}} onClick={onClick}>
-    <div style={{fontFamily:"'Instrument Serif',Georgia,serif",fontSize:15,color:"#fff",opacity:.9,textShadow:"0 2px 8px rgba(0,0,0,.6)",marginBottom:4}}>{d.title}</div>
-    <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:9,color:a}}>{d.artist}, {d.year}</div>
+  return <div onClick={onClick} style={{...style,background:d.grad,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:16,textAlign:"center",cursor:onClick?"pointer":"default"}}>
+    <div style={{fontFamily:"'Instrument Serif',Georgia,serif",fontSize:15,color:"#fff",opacity:.92,textShadow:"0 2px 8px rgba(0,0,0,.6)",marginBottom:4}}>{d.title}</div>
+    <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:9,color:a,letterSpacing:".04em"}}>{d.artist}, {d.year}</div>
   </div>;
-  return <img
-    src={sources[idx]}
-    alt={d.title}
-    loading="lazy"
-    onError={()=>{
-      if(idx<sources.length-1){
-        setIdx(idx+1);
-      }else{
-        setOk(false);
-      }
-    }}
-    onClick={onClick}
-    style={{...style,objectFit:(style&&style.objectFit)||"cover",cursor:onClick?"pointer":"default"}}
-  />;
 }
 
 function Card({d,onClick,i}){
@@ -311,7 +286,7 @@ function Detail({d,onClose}){
       <div style={{width:"100%",height:400,overflow:"hidden",borderRadius:"16px 16px 0 0",cursor:"zoom-in"}} onClick={()=>setImgFull(true)}>
         <Img d={d} style={{width:"100%",height:"100%",display:"block"}}/>
         <div style={{position:"relative",top:-36,textAlign:"center"}}>
-          <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:10,color:"rgba(255,255,255,.5)",background:"rgba(0,0,0,.5)",padding:"4px 12px",borderRadius:12,backdropFilter:"blur(4px)"}}>Click image to view full size</span>
+          <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:10,color:"rgba(255,255,255,.5)",background:"rgba(0,0,0,.5)",padding:"4px 12px",borderRadius:12,backdropFilter:"blur(4px)"}}>Click panel to view full size</span>
         </div>
       </div>
       <div style={{padding:"16px 36px 36px"}}>
