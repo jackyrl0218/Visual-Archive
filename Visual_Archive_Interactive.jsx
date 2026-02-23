@@ -243,12 +243,35 @@ const DATA = [
 
 function Img({d,style,onClick}){
   const [ok,setOk]=useState(true);
+  const [idx,setIdx]=useState(0);
   const a=CC[d.cat]||"#888";
+  const placeholder=`https://picsum.photos/seed/visual-archive-${d.id}/1200/900`;
+  const fallbackPreview=d.url?`https://opengraph.githubassets.com/1/${encodeURIComponent(d.url)}`:null;
+  const sources=[d.img,fallbackPreview,placeholder].filter(Boolean);
+
+  useEffect(()=>{
+    setOk(true);
+    setIdx(0);
+  },[d.img,d.url]);
+
   if(!ok) return <div style={{...style,background:d.grad,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:16,textAlign:"center",cursor:onClick?"pointer":"default"}} onClick={onClick}>
     <div style={{fontFamily:"'Instrument Serif',Georgia,serif",fontSize:15,color:"#fff",opacity:.9,textShadow:"0 2px 8px rgba(0,0,0,.6)",marginBottom:4}}>{d.title}</div>
     <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:9,color:a}}>{d.artist}, {d.year}</div>
   </div>;
-  return <img src={d.img} alt={d.title} referrerPolicy="no-referrer" crossOrigin="anonymous" onError={()=>setOk(false)} onClick={onClick} style={{...style,objectFit:"cover",cursor:onClick?"pointer":"default"}} />;
+  return <img
+    src={sources[idx]}
+    alt={d.title}
+    loading="lazy"
+    onError={()=>{
+      if(idx<sources.length-1){
+        setIdx(idx+1);
+      }else{
+        setOk(false);
+      }
+    }}
+    onClick={onClick}
+    style={{...style,objectFit:(style&&style.objectFit)||"cover",cursor:onClick?"pointer":"default"}}
+  />;
 }
 
 function Card({d,onClick,i}){
@@ -278,7 +301,7 @@ function Detail({d,onClose}){
   useEffect(()=>{const h=e=>{if(e.key==="Escape"){imgFull?setImgFull(false):onClose();}};window.addEventListener("keydown",h);return()=>window.removeEventListener("keydown",h);},[onClose,imgFull]);
 
   if(imgFull) return <div onClick={()=>setImgFull(false)} style={{position:"fixed",inset:0,zIndex:2000,background:"rgba(0,0,0,.95)",display:"flex",alignItems:"center",justifyContent:"center",cursor:"zoom-out",padding:20,animation:"fi .2s ease"}}>
-    <img src={d.img} alt={d.title} referrerPolicy="no-referrer" crossOrigin="anonymous" style={{maxWidth:"95vw",maxHeight:"95vh",objectFit:"contain",borderRadius:8}} onError={e=>{e.currentTarget.style.display="none";}}/>
+    <Img d={d} style={{maxWidth:"95vw",maxHeight:"95vh",objectFit:"contain",borderRadius:8,display:"block"}}/>
     <div style={{position:"absolute",bottom:20,left:"50%",transform:"translateX(-50%)",fontFamily:"'JetBrains Mono',monospace",fontSize:11,color:"#666"}}>Click anywhere or press Esc to close</div>
   </div>;
 
@@ -315,53 +338,62 @@ function App(){
   const [sel,setSel]=useState(null);
   const [v,setV]=useState("grid");
   const list=f==="All"?DATA:DATA.filter(d=>d.cat===f);
+  const sidePad="clamp(16px,3.8vw,64px)";
+  const shell={maxWidth:1680,margin:"0 auto"};
+
   return <>
     <style>{`
       @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
       *{margin:0;padding:0;box-sizing:border-box}
+      html,body{letter-spacing:.01em;line-height:1.55}
       ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
       @keyframes fi{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
       @keyframes su{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
       @keyframes gs{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
     `}</style>
-    <div style={{minHeight:"100vh",background:"#09090b",color:"#f0ece4",fontFamily:"'DM Sans',sans-serif"}}>
-      <header style={{padding:"48px 36px 32px",borderBottom:"1px solid rgba(255,255,255,.05)"}}>
-        <div style={{maxWidth:1280,margin:"0 auto"}}>
-          <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:10,fontWeight:600,letterSpacing:3,color:"#555",textTransform:"uppercase",marginBottom:10}}>ARS Visual Culture · Spring 2026</div>
+
+    <div style={{minHeight:"100vh",background:"#09090b",color:"#f0ece4",fontFamily:"'DM Sans',sans-serif",letterSpacing:"0.01em"}}>
+      <header style={{padding:`clamp(38px,6vw,72px) ${sidePad} clamp(28px,4vw,40px)`,borderBottom:"1px solid rgba(255,255,255,.05)"}}>
+        <div style={shell}>
+          <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:11,fontWeight:600,letterSpacing:2.8,color:"#555",textTransform:"uppercase",marginBottom:10}}>ARS Visual Culture - Spring 2026</div>
           <h1 style={{fontFamily:"'Instrument Serif',Georgia,serif",fontSize:"clamp(32px,5vw,52px)",fontWeight:400,lineHeight:1.1,marginBottom:8,background:"linear-gradient(135deg,#f0ece4,#c4a882,#f0ece4)",backgroundSize:"200% 200%",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",animation:"gs 6s ease infinite"}}>Annotated Image Archive</h1>
-          <p style={{fontSize:14,color:"#666",maxWidth:600,lineHeight:1.6,marginBottom:4}}>20 images exploring immersive environments, perceptual systems, embodied interaction, generative aesthetics, and the mediation of experience through technology.</p>
-          <p style={{fontFamily:"'JetBrains Mono',monospace",fontSize:11,color:"#444"}}>Jack Yuan · Parsons School of Design</p>
+          <p style={{fontSize:15,color:"#777",maxWidth:820,lineHeight:1.8,letterSpacing:".012em",marginBottom:6}}>20 images exploring immersive environments, perceptual systems, embodied interaction, generative aesthetics, and the mediation of experience through technology.</p>
+          <p style={{fontFamily:"'JetBrains Mono',monospace",fontSize:11,color:"#555",letterSpacing:".06em"}}>Jack Yuan - Parsons School of Design</p>
         </div>
       </header>
-      <div style={{padding:"18px 36px",borderBottom:"1px solid rgba(255,255,255,.04)",position:"sticky",top:0,zIndex:100,background:"rgba(9,9,11,.92)",backdropFilter:"blur(16px)"}}>
-        <div style={{maxWidth:1280,margin:"0 auto",display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:10}}>
-          <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
+
+      <div style={{padding:`16px ${sidePad}`,borderBottom:"1px solid rgba(255,255,255,.04)",position:"sticky",top:0,zIndex:100,background:"rgba(9,9,11,.92)",backdropFilter:"blur(16px)"}}>
+        <div style={{...shell,display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:14}}>
+          <div style={{display:"flex",flexWrap:"wrap",gap:8}}>
             {CATS.map(c=>{const act=f===c;const col=c==="All"?"#888":(CC[c]||"#888");
-              return <button key={c} onClick={()=>setF(c)} style={{fontFamily:"'JetBrains Mono',monospace",fontSize:10,fontWeight:act?700:500,padding:"5px 12px",borderRadius:20,border:act?`1px solid ${col}`:"1px solid rgba(255,255,255,.08)",background:act?`${col}20`:"transparent",color:act?col:"#666",cursor:"pointer",transition:"all .2s",letterSpacing:.3}}>{c==="All"?`All (${DATA.length})`:c.split(" / ")[0]}</button>})}
+              return <button key={c} onClick={()=>setF(c)} style={{fontFamily:"'JetBrains Mono',monospace",fontSize:11,fontWeight:act?700:500,padding:"7px 14px",borderRadius:20,border:act?`1px solid ${col}`:"1px solid rgba(255,255,255,.08)",background:act?`${col}20`:"transparent",color:act?col:"#666",cursor:"pointer",transition:"all .2s",letterSpacing:.5}}>{c==="All"?`All (${DATA.length})`:c.split(" / ")[0]}</button>})}
           </div>
-          <div style={{display:"flex",gap:4}}>
-            {["grid","list"].map(m=><button key={m} onClick={()=>setV(m)} style={{fontFamily:"'JetBrains Mono',monospace",fontSize:10,padding:"5px 10px",borderRadius:6,border:v===m?"1px solid rgba(255,255,255,.2)":"1px solid rgba(255,255,255,.06)",background:v===m?"rgba(255,255,255,.08)":"transparent",color:v===m?"#ddd":"#555",cursor:"pointer",textTransform:"uppercase",letterSpacing:1}}>{m}</button>)}
+          <div style={{display:"flex",gap:6}}>
+            {["grid","list"].map(m=><button key={m} onClick={()=>setV(m)} style={{fontFamily:"'JetBrains Mono',monospace",fontSize:11,padding:"7px 12px",borderRadius:6,border:v===m?"1px solid rgba(255,255,255,.2)":"1px solid rgba(255,255,255,.06)",background:v===m?"rgba(255,255,255,.08)":"transparent",color:v===m?"#ddd":"#555",cursor:"pointer",textTransform:"uppercase",letterSpacing:1.2}}>{m}</button>)}
           </div>
         </div>
       </div>
-      <div style={{padding:"14px 36px 0",maxWidth:1280,margin:"0 auto"}}><span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:11,color:"#444"}}>{list.length} {list.length===1?"work":"works"}{f!=="All"&&` in ${f}`}</span></div>
-      <main style={{padding:"20px 36px 60px",maxWidth:1280,margin:"0 auto"}}>
-        {v==="grid"?<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:20}}>
-          {list.map((d,i)=><Card key={d.id} d={d} onClick={setSel} i={i}/>)}
-        </div>:<div style={{display:"flex",flexDirection:"column",gap:10}}>
+
+      <div style={{padding:`16px ${sidePad} 0`,...shell}}><span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:12,color:"#555",letterSpacing:".04em"}}>{list.length} {list.length===1?"work":"works"}{f!=="All"&&` in ${f}`}</span></div>
+
+      <main style={{padding:`24px ${sidePad} 72px`,...shell}}>
+        {v==="grid"?<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:24}}>
+          {list.map((d,i)=><Card key={d.id} d={d} onClick={setSel} i={i}/>) }
+        </div>:<div style={{display:"flex",flexDirection:"column",gap:14}}>
           {list.map((d,i)=>{const a=CC[d.cat]||"#888";
-            return <div key={d.id} onClick={()=>setSel(d)} style={{display:"flex",gap:18,alignItems:"center",padding:"14px 18px",background:"#111113",borderRadius:10,border:"1px solid rgba(255,255,255,.05)",cursor:"pointer",transition:"all .25s",animation:`fi .4s ease both`,animationDelay:`${i*.03}s`}}>
+            return <div key={d.id} onClick={()=>setSel(d)} style={{display:"flex",gap:22,alignItems:"center",padding:"16px 22px",background:"#111113",borderRadius:12,border:"1px solid rgba(255,255,255,.05)",cursor:"pointer",transition:"all .25s",animation:`fi .4s ease both`,animationDelay:`${i*.03}s`}}>
               <div style={{width:72,height:72,borderRadius:8,overflow:"hidden",flexShrink:0}}><Img d={d} style={{width:72,height:72}}/></div>
               <div style={{flex:1,minWidth:0}}>
-                <div style={{fontFamily:"'Instrument Serif',Georgia,serif",fontSize:16,color:"#f0ece4",marginBottom:2,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{d.title}</div>
-                <div style={{fontSize:12,color:"#777"}}>{d.artist} · {d.year}</div>
+                <div style={{fontFamily:"'Instrument Serif',Georgia,serif",fontSize:17,color:"#f0ece4",marginBottom:4,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{d.title}</div>
+                <div style={{fontSize:13,color:"#777",letterSpacing:".01em"}}>{d.artist} - {d.year}</div>
               </div>
-              <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:9,color:a,background:`${a}15`,padding:"3px 10px",borderRadius:12,whiteSpace:"nowrap",flexShrink:0}}>{d.cat.split(" / ")[0]}</span>
-              <span style={{fontSize:22,color:"#333",flexShrink:0}}>→</span>
+              <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:10,color:a,background:`${a}15`,padding:"5px 11px",borderRadius:12,whiteSpace:"nowrap",flexShrink:0,letterSpacing:".05em"}}>{d.cat.split(" / ")[0]}</span>
+              <span style={{fontSize:20,color:"#444",flexShrink:0}}>{"->"}</span>
             </div>})}
         </div>}
       </main>
-      <footer style={{padding:"24px 36px",borderTop:"1px solid rgba(255,255,255,.04)",textAlign:"center"}}><div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:10,color:"#333",letterSpacing:1}}>Visual Archive · ARS Visual Culture · Parsons School of Design · Spring 2026</div></footer>
+
+      <footer style={{padding:`30px ${sidePad}`,borderTop:"1px solid rgba(255,255,255,.04)",textAlign:"center"}}><div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:11,color:"#333",letterSpacing:1.2}}>Visual Archive - ARS Visual Culture - Parsons School of Design - Spring 2026</div></footer>
     </div>
     {sel&&<Detail d={sel} onClose={()=>setSel(null)}/>}
   </>;
