@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+const { useState, useEffect } = React;
 
 const CATS = [
   "All","Immersive Environment / Perceptual Systems","Wearables / Body-Centric Interaction",
@@ -310,7 +310,7 @@ function Detail({d,onClose}){
   </div>;
 }
 
-export default function App(){
+function App(){
   const [f,setF]=useState("All");
   const [sel,setSel]=useState(null);
   const [v,setV]=useState("grid");
@@ -365,4 +365,9 @@ export default function App(){
     </div>
     {sel&&<Detail d={sel} onClose={()=>setSel(null)}/>}
   </>;
+}
+
+const rootElement = document.getElementById("root");
+if (rootElement) {
+  ReactDOM.createRoot(rootElement).render(<App />);
 }
