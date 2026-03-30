@@ -44,7 +44,7 @@ const DATA = [
 
   { id:3, title:"Software Portfolio", artist:"Katharina Brunner", year:"2024",
     medium:"Digital generative artworks",
-    img:"https://katharinabrunner.de/wp-content/uploads/2023/08/generative-art-katharina-brunner-1.png",
+    img:"https://katharinabrunner.de/wp-content/uploads/2018/11/generativeart.png",
     citation:'Brunner, Katharina. Software Portfolio, 2024. Digital generative artworks.',
     url:"https://katharinabrunner.de/software-portfolio/",
     annotation:"Algorithmically generated geometric compositions revealing subtle variation through rule-based systems.",
@@ -55,7 +55,7 @@ const DATA = [
 
   { id:4, title:"Residential Interior Project", artist:"Rikai Interior", year:"2023",
     medium:"Minimal interior design",
-    img:"https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/3bf26e145577599.629c2f9a0b3a1.jpg",
+    img:"https://mir-s3-cdn-cf.behance.net/projects/404/853ae6145577599.Y3JvcCwxNjM2LDEyODAsMjc1LDA.jpg",
     citation:'Rikai Interior. Residential Interior Project, 2023.',
     url:"https://www.behance.net/gallery/145577599/Respublika_31",
     annotation:"Calm, minimal interior emphasizing soft materials, neutral tones, and quiet composition.",
@@ -77,7 +77,7 @@ const DATA = [
 
   { id:6, title:"TV Buddha", artist:"Nam June Paik", year:"1974",
     medium:"Closed-circuit video sculpture",
-    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Nam_June_Paik_TV-Buddha.jpg/800px-Nam_June_Paik_TV-Buddha.jpg",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/TV_Buddha.jpg/960px-TV_Buddha.jpg",
     citation:'Paik, Nam June. TV Buddha, 1974. Closed-circuit video sculpture.',
     url:"https://en.wikipedia.org/wiki/TV_Buddha",
     annotation:"A Buddha statue observes its own live video feed, collapsing subject and viewer into a feedback loop.",
@@ -88,7 +88,7 @@ const DATA = [
 
   { id:7, title:"(Dés)Ordres", artist:"Vera Molnár", year:"1974",
     medium:"Digital plotter drawing",
-    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Desordres_by_Vera_Molnar.jpg/800px-Desordres_by_Vera_Molnar.jpg",
+    img:"https://i0.wp.com/spalterdigital.com/wp-content/uploads/2015/12/DSC_8404-copy1.jpg?fit=1655%2C1590&ssl=1",
     citation:'Molnár, Vera. (Dés)Ordres, 1974. Digital plotter drawing.',
     url:"https://en.wikipedia.org/wiki/Vera_Moln%C3%A1r",
     annotation:"Compositions created with algorithmic rules and mechanical plotters — system and repetition over subjective mark making.",
@@ -99,7 +99,7 @@ const DATA = [
 
   { id:8, title:"Princesse X", artist:"Constantin Brancusi", year:"1915–16",
     medium:"Bronze sculpture",
-    img:"https://upload.wikimedia.org/wikipedia/en/a/a5/Brancusi_Princess_X.jpg",
+    img:"https://arthistoryproject.com/site/assets/files/33466/constantin-brancusi-princess-x-1916-obelisk-art-history.png",
     citation:'Brancusi, Constantin. Princesse X, 1915–16. Bronze.',
     url:"https://en.wikipedia.org/wiki/Princess_X",
     annotation:"Sleek, near-abstract bronze form exploring bodily suggestion through minimal curve and surface.",
@@ -108,20 +108,20 @@ const DATA = [
     kw:["minimal form","body suggestion","material surface","abstraction"],
     grad:"linear-gradient(135deg,#1a1810,#c4a050,#f0e8d0)" },
 
-  { id:9, title:"One and Three Chairs", artist:"Joseph Kosuth", year:"1965",
-    medium:"Conceptual installation",
-    img:"https://upload.wikimedia.org/wikipedia/en/e/e5/One_and_Three_Chairs.jpg",
-    citation:'Kosuth, Joseph. One and Three Chairs, 1965. MoMA, New York.',
-    url:"https://www.moma.org/collection/works/81435",
-    annotation:'Juxtaposes a chair, its photograph, and its dictionary definition — interrogating representation and presence.',
+  { id:9, title:"Installation for Bilbao", artist:"Jenny Holzer", year:"1997",
+    medium:"Nine vertical double-sided electronic LED signboards",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/GuggenheimLED.jpg/1280px-GuggenheimLED.jpg",
+    citation:'Holzer, Jenny. Installation for Bilbao, 1997. Guggenheim Museum Bilbao.',
+    url:"https://www.guggenheim-bilbao.eus/en/the-collection/works/installation-for-bilbao",
+    annotation:"Nine towering LED columns scroll poetic text in English, Spanish, and Basque — transforming architectural space into a reading environment where meaning shifts with the viewer's position.",
     cat:"Conceptual Systems / Representation",
-    relevance:"Systems that mediate understanding, not just represent form.",
-    kw:["conceptual art","representation","language","embodiment"],
+    relevance:"Language disembodied and re-embodied in light and spatial rhythm — a conceptual system where text, temporality, and navigation produce understanding.",
+    kw:["text art","LED installation","language","public communication","spatial reading"],
     grad:"linear-gradient(135deg,#0a0f14,#1a2530,#7ec8e3)" },
 
   { id:10, title:"The Weather Project", artist:"Olafur Eliasson", year:"2003",
     medium:"Installation with monofrequency lamps and mist",
-    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/TheWeatherProject.jpg/1024px-TheWeatherProject.jpg",
+    img:"https://upload.wikimedia.org/wikipedia/commons/3/3a/Tate.modern.weather.project.jpg",
     citation:'Eliasson, Olafur. The Weather Project, 2003. Tate Modern, London.',
     url:"https://www.tate.org.uk/whats-on/tate-modern/unilever-series/unilever-series-olafur-eliasson-weather-project",
     annotation:"Industrial light and mist simulate a sunrise within the Turbine Hall.",
@@ -132,7 +132,7 @@ const DATA = [
 
   { id:11, title:"Afrum I (White)", artist:"James Turrell", year:"1967",
     medium:"Cross Corner Projection",
-    img:"https://upload.wikimedia.org/wikipedia/en/7/72/Afrum_Pale_Blue_2023.jpg",
+    img:"https://collections-images.lacma.org/remote_images/ma-32886-WEB.jpg",
     citation:'Turrell, James. Afrum I (White), 1967. Guggenheim Museum, New York.',
     url:"https://en.wikipedia.org/wiki/James_Turrell",
     annotation:"High-intensity light projection casts a glowing cube in a darkened room — entirely constructed by perception.",
@@ -143,7 +143,7 @@ const DATA = [
 
   { id:12, title:"Pulse Room", artist:"Rafael Lozano-Hemmer", year:"2006",
     medium:"Interactive installation with light bulbs and heart rate sensors",
-    img:"https://www.lozano-hemmer.com/image_sets/pulse_room/manchester_2007/pulse_room_manchester_2007_10.jpg",
+    img:"https://www.lozano-hemmer.com/image_sets/pulse_room/mexico_2020/pulse_room_mexico_city_2020_my_4484.jpg",
     citation:'Lozano-Hemmer, Rafael. Pulse Room, 2006. MoMA, New York.',
     url:"https://www.lozano-hemmer.com/pulse_room.php",
     annotation:"Up to 300 bulbs flash in sync with participants' heartbeats — a cumulative archive of biological rhythms.",
@@ -154,7 +154,7 @@ const DATA = [
 
   { id:13, title:"Archive Dreaming", artist:"Refik Anadol", year:"2017",
     medium:"Immersive media installation with machine learning",
-    img:"https://refikanadol.com/wp-content/uploads/2024/03/9-RAS_Archive_Dreaming_2017_Photo_by_Refik_Anadol_Studio-1536x1024.jpg",
+    img:"https://refikanadol.com/wp-content/uploads/2018/03/009-2400x1350.jpg",
     citation:'Anadol, Refik. Archive Dreaming, 2017. SALT Research, Istanbul.',
     url:"https://refikanadol.com/works/archive-dreaming/",
     annotation:"ML algorithms sort 1.7M documents; when idle, the installation 'dreams' of unexpected correlations.",
@@ -165,7 +165,7 @@ const DATA = [
 
   { id:14, title:"data.tron", artist:"Ryoji Ikeda", year:"2007",
     medium:"Audiovisual installation",
-    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Ryoji_Ikeda_-_data-verse_1_%2851463538704%29.jpg/1024px-Ryoji_Ikeda_-_data-verse_1_%2851463538704%29.jpg",
+    img:"https://www.ryojiikeda.com/data/work/datamatics-datatron-1.jpg",
     citation:'Ikeda, Ryoji. data.tron, 2007. Co-produced by Le Fresnoy and Forma.',
     url:"https://www.ryojiikeda.com/project/datamatics/",
     annotation:"Each pixel mathematically calculated; projected with synchronized sound immersing visitors in data streams.",
@@ -176,7 +176,7 @@ const DATA = [
 
   { id:15, title:"Third Hand", artist:"Stelarc", year:"1980–1998",
     medium:"Prosthetic performance with electronics",
-    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Stelarc%2C_Ear_on_Arm.jpg/800px-Stelarc%2C_Ear_on_Arm.jpg",
+    img:"https://www.medinart.eu/wp-content/uploads/2014/04/MEDinART_Stelarc_2.jpg",
     citation:'Stelarc. Third Hand, 1980–1998. Prosthetic performance.',
     url:"https://en.wikipedia.org/wiki/Stelarc",
     annotation:"Mechanical hand attached as additional appendage, controlled by muscle signals. Performed over two decades.",
@@ -187,7 +187,7 @@ const DATA = [
 
   { id:16, title:"Crystal Universe", artist:"teamLab", year:"2018",
     medium:"Interactive LED installation",
-    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/TeamLab_Borderless%2C_Crystal_Universe.jpg/1024px-TeamLab_Borderless%2C_Crystal_Universe.jpg",
+    img:"https://assets.team-lab.com/b5EBo9Uo-OK6SM09ZTkEZQ/4E8moosGD8XXGB3nHeDxue/public",
     citation:'teamLab. Wander through the Crystal World, 2018. teamLab Borderless, Tokyo.',
     url:"https://www.teamlab.art/e/tokyo/",
     annotation:"Immersive room of LED lights with mirrors creating an infinite crystalline universe responsive to visitors.",
@@ -198,7 +198,7 @@ const DATA = [
 
   { id:17, title:"Infinity Mirrored Room", artist:"Yayoi Kusama", year:"2013",
     medium:"Mirrors, LED lighting, acrylic balls, water",
-    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Infinity_mirror_room_-_Yayoi_Kusama_-_Henie_Onstad_Kunstsenter_2015_%2825007503420%29.jpg/800px-Infinity_mirror_room_-_Yayoi_Kusama_-_Henie_Onstad_Kunstsenter_2015_%2825007503420%29.jpg",
+    img:"https://www.thebroad.org/sites/default/files/art/kusama_the_souls_of_millions_1.jpg",
     citation:'Kusama, Yayoi. Infinity Mirrored Room, 2013. The Broad, Los Angeles.',
     url:"https://www.thebroad.org/art/yayoi-kusama/infinity-mirrored-room-souls-millions-light-years-away",
     annotation:"Mirrored chamber of LEDs extending infinitely, dissolving boundaries between body and void.",
@@ -209,7 +209,7 @@ const DATA = [
 
   { id:18, title:"Rain Room", artist:"Random International", year:"2012",
     medium:"Water, solenoid valves, 3D tracking cameras",
-    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Random_International_-_Rain_Room_2012_%282%29.jpg/1024px-Random_International_-_Rain_Room_2012_%282%29.jpg",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/RainRoomSharjah.jpg/960px-RainRoomSharjah.jpg",
     citation:'Random International. Rain Room, 2012. Originally Barbican, London.',
     url:"https://random-international.com/work/rain-room/",
     annotation:"Continuous rainfall pauses above visitors detected by 3D tracking — body shapes the system.",
@@ -218,35 +218,37 @@ const DATA = [
     kw:["responsive environment","body tracking","rain simulation","interactive systems"],
     grad:"linear-gradient(135deg,#0a0a0f,#1a1a2f,#4488aa)" },
 
-  { id:19, title:"Kinematics Dress", artist:"Nervous System", year:"2014",
-    medium:"3D-printed nylon, generative design algorithm",
-    img:"https://n-e-r-v-o-u-s.com/projects/sets/kinematics-dress/content/hi/kinematics-dress_1.jpg",
-    citation:'Rosenkrantz & Louis-Rosenberg. Kinematics Dress, 2014. MoMA, New York.',
-    url:"https://n-e-r-v-o-u-s.com/blog/?p=6280",
-    annotation:"3D-printed dress of thousands of interlocking panels, uniquely shaped by folding and draping algorithms.",
+  { id:19, title:"Schotter", artist:"Georg Nees", year:"1968",
+    medium:"Computer-generated lithograph, Siemens System 4004 / Zuse Graphomat Z64 plotter",
+    img:"https://framemark.vam.ac.uk/collections/2009CE0997/full/735,/0/default.jpg",
+    citation:'Nees, Georg. Schotter, 1968–70. Lithograph on paper. Victoria and Albert Museum, London.',
+    url:"https://collections.vam.ac.uk/item/O221321/schotter-print-nees-georg/",
+    annotation:"A grid of squares progressively deteriorates from strict order to chaotic displacement — a visual demonstration of the transition from order to disorder through algorithmic control of randomness.",
     cat:"Generative Systems / Algorithmic Aesthetics",
-    relevance:"Merges generative systems with body-centric interaction — algorithmic logic on the body.",
-    kw:["generative design","3D printing","wearable","computational fabrication"],
+    relevance:"Foundational generative artwork embodying the tension between deterministic rules and stochastic variation — computation as artistic medium.",
+    kw:["generative art","algorithmic systems","order and disorder","early computer art"],
     grad:"linear-gradient(135deg,#1a1a1a,#333,#aaddcc)" },
 
-  { id:20, title:"Sonic Meditations", artist:"Pauline Oliveros", year:"1974",
-    medium:"Text score and performance practice",
-    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Pauline_Oliveros_at_ONCE_Festival_1966.jpg/800px-Pauline_Oliveros_at_ONCE_Festival_1966.jpg",
-    citation:'Oliveros, Pauline. Sonic Meditations, 1974. Smith Publications.',
-    url:"https://paulineoliveros.us/deep-listening/",
-    annotation:"Text-based scores for deep, attentive listening — treating listening as creative, embodied act.",
+  { id:20, title:"The Forty Part Motet", artist:"Janet Cardiff", year:"2001",
+    medium:"Sound installation — 40 loudspeakers, recorded voices",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Lydinstallation_ARoS.jpg/1280px-Lydinstallation_ARoS.jpg",
+    citation:'Cardiff, Janet. The Forty Part Motet, 2001. National Gallery of Canada (permanent collection).',
+    url:"https://www.gallery.ca/collection/artwork/the-forty-part-motet",
+    annotation:"40 speakers each reproduce a single voice from Tallis's 1573 motet — visitors walk among them, constructing a unique spatial listening experience based on proximity and movement.",
     cat:"Conceptual Systems / Representation",
-    relevance:"Introduces auditory dimension — paralleling Turrell in the acoustic domain.",
-    kw:["deep listening","sonic practice","perception","embodiment","participatory score"],
+    relevance:"Transforms listening into an embodied, spatial act — the audience physically navigates sound, making perceptual choices about focus and immersion.",
+    kw:["deep listening","sound sculpture","spatial perception","embodiment","participatory"],
     grad:"linear-gradient(135deg,#0a0f14,#15202a,#7ec8e3)" },
 ];
 
 function Img({d,style,onClick}){
+  const [err,setErr]=useState(false);
   const a=CC[d.cat]||"#888";
-  return <div onClick={onClick} style={{...style,background:d.grad,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:16,textAlign:"center",cursor:onClick?"pointer":"default"}}>
+  if(err) return <div onClick={onClick} style={{...style,background:d.grad,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:16,textAlign:"center",cursor:onClick?"pointer":"default"}}>
     <div style={{fontFamily:"'Instrument Serif',Georgia,serif",fontSize:15,color:"#fff",opacity:.92,textShadow:"0 2px 8px rgba(0,0,0,.6)",marginBottom:4}}>{d.title}</div>
     <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:9,color:a,letterSpacing:".04em"}}>{d.artist}, {d.year}</div>
   </div>;
+  return <img src={d.img} alt={`${d.title} by ${d.artist}`} onError={()=>setErr(true)} onClick={onClick} style={{...style,objectFit:"cover",cursor:onClick?"pointer":"default"}}/>;
 }
 
 function Card({d,onClick,i}){
